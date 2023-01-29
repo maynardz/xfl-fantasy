@@ -1,0 +1,19 @@
+.tab span {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tab[aria-expanded="true"] > div {
+  border-bottom: solid 2px #fcee09
+}
+
+.tab[aria-expanded="false"] > div {
+  border-bottom: solid 2px white
+}
+
+.tab[aria-expanded="false"] span  {
+  color: white;
+}
+
+.tab[aria-expanded="true"] span  {
+  color: #fcee09;
+}

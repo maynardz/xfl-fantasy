@@ -1,0 +1,36 @@
+root, body {
+  margin: 0;
+  padding: 0;
+  background-color: #050a0e;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.App {
+  background-color: #050a0e;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+@font-face {
+  font-family: moon_get;
+  src: url(./assets/fonts/moon_get-Heavy.otf);
+}
+
+@font-face {
+  font-family: coco_gothic;
+  src: url(./assets/fonts/CocoGothic_trial.ttf);
+}
+
+@font-face {
+  font-family: coco_gothic_light;
+  src: url(./assets/fonts/CocoGothic-Light_trial.ttf);
+}
+
+@font-face {
+  font-family: coco_gothic_ultralight;
+  src: url(./assets/fonts/CocoGothic-UltraLight_trial.ttf);
+}

@@ -1,0 +1,7 @@
+#players_card {
+  overflow: auto;
+}
+
+.table span {
+  font-size: 12px;
+}
