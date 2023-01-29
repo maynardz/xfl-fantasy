@@ -1,10 +1,13 @@
 import React from 'react';
 
+import Invite from './Invite/Invite';
+
 import { Card, CardBody, Header, Paragraph, Button } from 'grommet';
 
 const LeagueTeams = props => {
 
   const [teams, setTeams] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     fetch_managers();
@@ -31,7 +34,8 @@ const LeagueTeams = props => {
           <Paragraph>1/10</Paragraph>
         </Header>
         <CardBody pad="large">
-          <Button color={'#050A0E'} primary label="+ INVITE FRIENDS TO JOIN" style={{ fontSize: '14px' }} />
+          {/* <Button color={'#050A0E'} primary label="+ INVITE FRIENDS TO JOIN" style={{ fontSize: '14px' }} /> */}
+          <Invite open={open} setOpen={setOpen} />
           {
             teams.map((team, index) => <p key={index}>1. {team.username}</p>)
           }
