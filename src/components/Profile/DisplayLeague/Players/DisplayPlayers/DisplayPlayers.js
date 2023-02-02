@@ -11,8 +11,10 @@ const colors = {
 }
 
 const DisplayPlayers = props => {
+  // console.log(props);
 
   const [value, setValue] = React.useState('');
+  const [selectedPlayer, setSelectedPlayer] = React.useState('');
 
   React.useEffect(() => {
     value === '' ? props.setList([]) : console.log('players still in list')
@@ -87,10 +89,11 @@ const DisplayPlayers = props => {
             <div>
               {
                 props.players.map(player => (
-                  <div key={player.id}>
+                  <div key={player.playerId} onClick={() => setSelectedPlayer(player.playerId)}>
                     <div style={{ fontSize: '14px', display: 'flex', alignItems: 'center' }} >
                       <img src={player.player_image} style={{height: '50px', width: 'auto', display: 'inline', marginRight: '1em', marginBottom: '.2em' }} />
                       <p style={{ fontWeight: 700 }}>{player.first_name} {player.last_name}</p>
+                      <button onClick={() => props.addPlayer(player)}>+</button>
                     </div>
                     <div style={{ fontSize: '14px' }}>
                       {
@@ -138,7 +141,7 @@ const DisplayPlayers = props => {
             <div>
               {
                 props.list.map(player => (
-                  <div key={player.id}>
+                  <div key={player.playerId}>
                     <div style={{ fontSize: '14px', display: 'flex', alignItems: 'center' }} >
                       <img src={player.player_image} style={{height: '50px', width: 'auto', display: 'inline', marginRight: '1em', marginBottom: '.2em' }} />
                       <p style={{ fontWeight: 700 }}>{player.first_name} {player.last_name}</p>

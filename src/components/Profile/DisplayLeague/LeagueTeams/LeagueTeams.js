@@ -2,7 +2,7 @@ import React from 'react';
 
 import Invite from './Invite/Invite';
 
-import { Card, CardBody, Header, Paragraph, Button } from 'grommet';
+import { Card, CardBody, Header, Paragraph } from 'grommet';
 
 const LeagueTeams = props => {
 
@@ -10,18 +10,19 @@ const LeagueTeams = props => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
+    console.log('effect ran')
     fetch_managers();
   }, [])
 
-  const fetch_managers = () => {
-    fetch(`http://localhost:3000/league/${props.leagueId}/users`, {
+  const fetch_managers = async () => {
+    await fetch(`http://localhost:3000/league/${props.league.id}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${props.sessionToken}`
       }
     })
-    .then(res => res.json())
+    .then(res => res.ok ? res.json() : Promise.reject())
     .then(json => setTeams(json))
     .catch(err => console.log(err))
   }
@@ -31,11 +32,10 @@ const LeagueTeams = props => {
       <Card height="auto" width="92vw" background="#151B21" style={{marginTop: '1em', fontFamily: 'Arial'}}>
         <Header background="#fcee09" style={{ padding: '1em', fontWeight: '700' }}>
           <Paragraph>TEAMS</Paragraph>
-          <Paragraph>1/10</Paragraph>
+          <Paragraph>{teams.length}/{props.league.league_size}</Paragraph>
         </Header>
         <CardBody pad="large">
-          {/* <Button color={'#050A0E'} primary label="+ INVITE FRIENDS TO JOIN" style={{ fontSize: '14px' }} /> */}
-          <Invite open={open} setOpen={setOpen} />
+          <Invite open={open} setOpen={setOpen} league={props.league} />
           {
             teams.map((team, index) => <p key={index}>1. {team.username}</p>)
           }

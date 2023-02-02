@@ -14,7 +14,7 @@ const Players = props => {
   }, [])
 
   const fetch_players = async () => {
-    await fetch(`http://localhost:3000/players/all`, {
+    await fetch(`http://localhost:3000/league/${props.league.id}/players/all`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -28,24 +28,49 @@ const Players = props => {
     .catch(err => console.log(err))
   }
 
-  const fetch_players_byPos = (pos) => {
-    fetch(`http://localhost:3000/players/${pos}`, {
-      method: 'GET',
+  // SORT PLAYERS ON FRONT END INSTEAD OF RUNNING ANOTHER FETCH 
+
+  // const fetch_players_byPos = (pos) => {
+  //   fetch(`http://localhost:3000/league/${props.league.id}/players/${pos}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer ${props.sessionToken}`
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     setPlayers(json)
+  //   })
+  //   .catch(err => console.log(err))
+  // }
+
+  const addPlayer = async (player) => {
+    console.log(player);
+    await fetch(`http://localhost:3000/roster/${props.userID}/${props.league.id}/${player.playerId}/add`, {
+      method: 'POST',
+      body: JSON.stringify({
+        fa: false
+      }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${props.sessionToken}`
       }
     })
-    .then(res => res.json())
-    .then(json => {
-      setPlayers(json)
-    })
-    .catch(err => console.log(err))
+      .then((res) => {
+        if (res.ok) return res.json();
+        else throw new Error('Status code error:', res.status);
+      })
+      .then(json => {
+        console.log(json);
+        fetch_players();
+      })
+      .catch(error => console.log(error))
   }
 
   return (
     <Grommet>
-      <DisplayPlayers players={players} setPlayers={setPlayers} list={list} setList={setList} fetch_players={fetch_players} fetch_players_byPos={fetch_players_byPos} />
+      <DisplayPlayers players={players} setPlayers={setPlayers} list={list} setList={setList} fetch_players={fetch_players} userID={props.userID} league={props.league} sessionToken={props.sessionToken} addPlayer={addPlayer} />
     </Grommet>
   )
 }

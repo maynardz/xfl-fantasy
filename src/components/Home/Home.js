@@ -6,6 +6,7 @@ import wolfpack_pictoral from '../../assets/images/wolfpack_pictoral.png';
 
 import { Card, CardBody, Heading, Paragraph, Button, WorldMap, Tip } from 'grommet';
 
+import ssd from '../../assets/images/ssd.png';
 // import {
 //   useNavigate
 // } from "react-router-dom";
@@ -30,11 +31,11 @@ const Dashboard = props => {
                 color="#aaaaaa"
                 places={[
                   {
+                    id: 'AR',
                     name: 'Arlington Renegades',
                     location: [32.705002, -97.122780],
                     color: '#6ab3e6',
                     onClick: (name) => { window.open('https://www.xfl.com/teams/arlington', '_blank') },
-                    onHover: (name) => { return name ? <p>Arlington Renegades</p> : <div></div> }
                   },
                   {
                     name: 'D.C. Defenders',

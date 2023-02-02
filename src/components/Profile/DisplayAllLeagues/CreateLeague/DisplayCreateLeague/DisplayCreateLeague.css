@@ -1,0 +1,18 @@
+#league_type .selected {
+  background-color: #00f0ff;
+  border: 1px solid #00f0ff;
+}
+
+#league_size .selected {
+  background-color: #00f0ff;
+  border: 1px solid #00f0ff;
+}
+
+#draft_type .selected {
+  background-color: #00f0ff;
+  border: 1px solid #00f0ff;
+}
+
+#league_name_input::placeholder {
+  font-size: 13px;
+}

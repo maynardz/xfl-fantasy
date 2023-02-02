@@ -51,7 +51,7 @@ const Profile = props => {
 
         <div>
           {
-            displayLeague ? <DisplayLeague sessionToken={props.sessionToken} selectLeague={selectLeague} displayLeague={displayLeague} setDisplayLeague={setDisplayLeague} /> : (
+            displayLeague ? <DisplayLeague sessionToken={props.sessionToken} selectLeague={selectLeague} displayLeague={displayLeague} setDisplayLeague={setDisplayLeague} userID={props.userID} /> : (
               <div>
 
                 <Card height="auto" width="92vw" background="#151B21" style={{marginTop: '1em', fontFamily: 'Arial'}}>
@@ -63,7 +63,6 @@ const Profile = props => {
 
                       <DisplayAllLeagues leagues={leagues} displayLeague={displayLeague} setDisplayLeague={setDisplayLeague} setSelectLeague={setSelectLeague} />
 
-                      <br/>
                       <br/>
 
                       <CreateLeague leagues={leagues} sessionToken={props.sessionToken} userID={props.userID} currentUser={props.currentUser} fetch_user_leagues={fetch_user_leagues} />
