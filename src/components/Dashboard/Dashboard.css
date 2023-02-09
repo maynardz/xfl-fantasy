@@ -1,0 +1,67 @@
+#wolfpack_logo_nav {
+  height: 50px;
+}
+
+#sidebar span {
+  display: block;
+  margin-top: -1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: white;
+}
+
+#sidebar .icon_container {
+  margin: 1.5em 0.5em 1.5em 0.5em;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
+  background-color: #070F16 !important;
+}
+
+#dashboard_container {
+  display: flex;
+  justify-content: center;
+}
+
+#sidebar_view {
+  display: flex;
+}
+
+.tab span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dTfmGz {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.fAHGkw {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.dchFaP {
+  border-bottom: none !important;
+}
+
+.tab[aria-expanded="false"] {
+  border-bottom: none !important;
+}
+
+.tab[aria-expanded="false"] span  {
+  color: white;
+}
+
+.tab[aria-expanded="true"] span  {
+  color: #fcee09;
+}

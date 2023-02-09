@@ -4,7 +4,7 @@ import DisplayStarters from './DisplayStarters/DisplayStarters';
 import DisplayBench from './DisplayBench/DisplayBench';
 
 import { Card, CardBody, Header } from 'grommet';
-import { SettingsOption } from 'grommet-icons';
+import { Actions } from 'grommet-icons';
 
 const colors = {
   qb: '#ff003c',
@@ -18,7 +18,6 @@ const colors = {
 const UserTeam = props => {
 
   const [team, setTeam] = React.useState([]);
-  console.log(team);
 
   React.useEffect(() => {
     fetch_team();
@@ -43,7 +42,7 @@ const UserTeam = props => {
         <CardBody pad="medium">
           <div>
             <h4 style={{color: 'white', fontFamily: 'Arial', display: 'inline-block'}}>{team.team_name}</h4>
-            <SettingsOption style={{height: '15px'}}/>
+            <Actions style={{height: '15px'}}/>
           </div>
         </CardBody>
       </Card>

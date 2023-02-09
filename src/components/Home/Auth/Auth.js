@@ -1,7 +1,9 @@
 import React from 'react';
 import './Auth.css';
 
-import wolfpack_logo from '../../assets/images/wolfpack_logo_2.png';
+import { useNavigate } from 'react-router-dom';
+
+import wolfpack_logo from '../../../assets/images/wolfpack_logo_2.png';
 
 import { Grommet, Form, FormField, TextInput, Box, Button, CheckBox } from 'grommet';
 import { deepMerge } from "grommet/utils";
@@ -26,7 +28,7 @@ const customTheme = deepMerge(Grommet, {
 });
 
 const Auth = props => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [login, setLogin] = React.useState(true);
   const [username, setUsername] = React.useState('');
@@ -37,7 +39,7 @@ const Auth = props => {
   //   navigate('/profile');
   // }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const url = login ? `http://localhost:3000/user/login` : `http://localhost:3000/user/signup`;
 
@@ -48,7 +50,7 @@ const Auth = props => {
         }
       }
    
-    fetch(url, {
+    await fetch(url, {
         method: 'POST',
         body: JSON.stringify(bodyObj),
         headers: {
@@ -58,7 +60,7 @@ const Auth = props => {
         .then(res => res.json())
         .then(json => {
             props.updateLocalStorage(json.sessionToken, json.user.username, json.user.id);
-            props.setLoginToggle(!props.loginToggle)
+            navigate('/dashboard')
         })
         .catch(err => alert(err))
   }

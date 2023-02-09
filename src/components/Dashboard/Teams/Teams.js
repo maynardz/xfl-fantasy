@@ -29,7 +29,7 @@ const LeagueTeams = props => {
 
   return (
     <div>
-      <Card height="auto" width="92vw" background="#151B21" style={{marginTop: '1em', fontFamily: 'Arial'}}>
+      <Card height="auto" width="100%" background="#151B21" style={{marginTop: '1em', fontFamily: 'Arial'}}>
         <Header background="#fcee09" style={{ padding: '1em', fontWeight: '700' }}>
           <Paragraph>TEAMS</Paragraph>
           <Paragraph>{teams.length}/{props.league.league_size}</Paragraph>

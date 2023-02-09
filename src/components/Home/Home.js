@@ -1,6 +1,8 @@
 import React from 'react';
 import './Home.css';
 
+import { Link } from 'react-router-dom';
+
 // import wolfpack_logo from '../../assets/images/wolfpack_logo_2.png';
 import wolfpack_pictoral from '../../assets/images/wolfpack_pictoral.png';
 
@@ -19,7 +21,7 @@ const Dashboard = props => {
   // }
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Card height="auto" width="92vw" background="#151B21" style={{marginTop: '1em', marginBottom: '1em', fontFamily: 'Arial'}}>
           {/* <Header background="#fcee09" style={{ padding: '1em', fontWeight: '700' }}>
             LEAGUES
@@ -91,10 +93,11 @@ const Dashboard = props => {
               <Paragraph>Signup now to play XFL Fantasy Football</Paragraph>
               <br/>
               <br/>
-              <Button 
-              color={'#fcee09'} 
-              primary label="Login / Create an Account" 
-              onClick={() => props.setLoginToggle(!props.loginToggle)} />
+
+              <Link to='/auth'>
+                <Button color={'#fcee09'} primary label="Login / Create an Account" />
+              </Link>
+
             </div>
           </CardBody>
         </Card>
