@@ -1,4 +1,5 @@
 import React from 'react';
+import APIURL from '../../../helpers/environment';
 
 import DisplayStarters from './DisplayStarters/DisplayStarters';
 import DisplayBench from './DisplayBench/DisplayBench';
@@ -24,7 +25,7 @@ const UserTeam = props => {
   }, []);
 
   const fetch_team = async () => {
-    await fetch(`http://localhost:3000/user/${props.userID}/league/${props.league.id}/team`, {
+    await fetch(`${APIURL}/user/${props.userID}/league/${props.league.id}/team`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

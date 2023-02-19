@@ -1,4 +1,5 @@
 import React from 'react';
+import APIURL from '../../../helpers/environment';
 
 import Invite from './Invite/Invite';
 
@@ -15,7 +16,7 @@ const LeagueTeams = props => {
   }, [])
 
   const fetch_managers = async () => {
-    await fetch(`http://localhost:3000/league/${props.league.id}/users`, {
+    await fetch(`${APIURL}/league/${props.league.id}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

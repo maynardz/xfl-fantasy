@@ -3,6 +3,7 @@ import './Dashboard.css';
 import wolfpack_logo from '../../assets/images/wolfpack_logo_2.png';
 
 import { useNavigate } from 'react-router-dom';
+import APIURL from '../../helpers/environment';
 
 import { Nav, Button, Tabs, Tab } from 'grommet';
 import { Scorecard, Group, Menu, AppsRounded, Article, BarChart } from 'grommet-icons';
@@ -74,7 +75,7 @@ const Dashboard = props => {
     if (userID === '') {
       return
     } else {
-      await fetch(`http://localhost:3000/user/${userID}/leagues`, {
+      await fetch(`${APIURL}/user/${userID}/leagues`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ const Dashboard = props => {
     if (selectLeague.id === undefined) {
       return 
     } else {
-      await fetch(`http://localhost:3000/league/${selectLeague.id}`, {
+      await fetch(`${APIURL}/league/${selectLeague.id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

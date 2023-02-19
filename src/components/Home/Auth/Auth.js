@@ -2,6 +2,7 @@ import React from 'react';
 import './Auth.css';
 
 import { useNavigate } from 'react-router-dom';
+import APIURL from '../../../helpers/environment';
 
 import wolfpack_logo from '../../../assets/images/wolfpack_logo_2.png';
 
@@ -41,7 +42,7 @@ const Auth = props => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = login ? `http://localhost:3000/user/login` : `http://localhost:3000/user/signup`;
+    const url = login ? `${APIURL}/user/login` : `${APIURL}/user/signup`;
 
     const bodyObj = {
         user: {
