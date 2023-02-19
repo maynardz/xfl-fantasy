@@ -14,18 +14,13 @@ const DisplayCreateLeague = (props) => {
   const [active7, setActive7] = React.useState(false);
 
   return (
-    <div>
+    <div style={{ color: 'white' }}>
       Create league
     </div>
   )
 }
 
 export default DisplayCreateLeague;
-
-
-
-
-
 
 // {
 //   props.trigger ? null : (

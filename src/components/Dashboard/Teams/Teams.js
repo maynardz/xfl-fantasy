@@ -10,7 +10,7 @@ const LeagueTeams = props => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    console.log('effect ran')
+    // console.log('effect ran')
     fetch_managers();
   }, [])
 

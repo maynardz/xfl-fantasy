@@ -15,6 +15,7 @@ import { Menu } from 'grommet-icons';
 import Home from './components/Home/Home';
 import Auth from './components/Home/Auth/Auth';
 import Dashboard from './components/Dashboard/Dashboard';
+import CreateLeague from './components/Dashboard/Leagues/CreateLeague/CreateLeague';
 import Leagues from './components/Dashboard/Leagues/Leagues';
 import League from './components/Dashboard/League/League';
 
@@ -105,6 +106,13 @@ function App() {
             clearLocalStorage={clearLocalStorage}
             toggleDrawer={toggleDrawer}
             state={state}
+          />
+        } />
+
+        <Route path='dashboard/league/new' element={
+          <CreateLeague
+            sessionToken={sessionToken}
+            userID={userID}
           />
         } />
 

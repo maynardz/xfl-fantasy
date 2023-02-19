@@ -18,37 +18,37 @@ const DisplaySinglePlayer = props => {
   return (
     <div>
       <Card id='players_card' height='100vh' width="92vw" background="#151B21" style={{ fontFamily: 'Arial', overflow: 'auto'}}>
-        <Header id='sp_header' style={{ padding: '1.5em', fontWeight: '700', background: `linear-gradient(to right, #${props.selectedPlayer.team.color}, #000000)`, height: '250px', justifyContent: 'space-around' }}>
-          <h2 style={{marginBottom: '1.55em', fontSize: '1.4rem'}}>{props.selectedPlayer.fullName}</h2>
+        <Header id='sp_header' style={{ padding: '1.5em', fontWeight: '700', background: `linear-gradient(to right, #${props.selectedPlayer.team.color}, #000000)`, height: '250px', justifyContent: 'space-evenly', alignItems: 'center' }}>
+          <h2 style={{ marginBottom: '1.60em', fontSize: '1.15rem' }}>{props.selectedPlayer.fullName}</h2>
           {/* <h6>{props.selectedPlayer.team.name}</h6> */}
-          <div style={{display: 'flex'}}>
+          <div style={{ display: 'flex' }}>
             <div className='personal_info'>
               <p>AGE</p>
-              <h4>
+              <p>
                 {
                   !props.selectedPlayer.age ? '-' : props.selectedPlayer.age
                 }
-              </h4>
+              </p>
             </div>
             <div className='personal_info'>
               <p>HEIGHT</p>
-              <h4>
+              <p>
                 {
                   !props.selectedPlayer.displayHeight ? '-' : props.selectedPlayer.displayHeight
                 }
-              </h4>
+              </p>
             </div>
             <div className='personal_info'>
               <p>WEIGHT</p>
-              <h4>
+              <p>
                 {
                   !props.selectedPlayer.displayWeight ? '-' : props.selectedPlayer.displayWeight
                 }
-              </h4>
+              </p>
             </div>
             <div className='personal_info'>
               <p>EXP</p>
-              <h4>{props.selectedPlayer.experience['years']}</h4>
+              <p>{props.selectedPlayer.experience['years']}</p>
             </div>
           </div>
         </Header>
@@ -58,6 +58,7 @@ const DisplaySinglePlayer = props => {
         </div>
         <CardBody pad="large">
           <div>
+            {props.selectedPlayer.id}
             <br/>
             <br/>
             <Button label='<' style={{ position: 'absolute', bottom: 0, marginBottom: '1em' }} color='#fcee09' onClick={() => {

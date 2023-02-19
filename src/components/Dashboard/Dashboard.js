@@ -5,7 +5,7 @@ import wolfpack_logo from '../../assets/images/wolfpack_logo_2.png';
 import { useNavigate } from 'react-router-dom';
 
 import { Nav, Button, Tabs, Tab } from 'grommet';
-import { Scorecard, Group, Menu, AppsRounded } from 'grommet-icons';
+import { Scorecard, Group, Menu, AppsRounded, Article, BarChart } from 'grommet-icons';
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Box from '@mui/material/Box';
@@ -16,6 +16,8 @@ import Players from './Players/Players';
 import Scores from './Scores/Scores';
 import UserTeam from './UserTeam/UserTeam';
 import Teams from './Teams/Teams';
+import News from './News/News';
+import Standings from './Standings/Standings';
 
 const Dashboard = props => {
   const navigate = useNavigate();
@@ -24,15 +26,14 @@ const Dashboard = props => {
   const [league, setLeague]  = React.useState({});
   const [userID, setUserID] = React.useState('');
   const [selectLeague, setSelectLeague] = React.useState({});
-  // const [displayPlayers, setDisplayPlayers] = React.useState(true);
-  // const [displayLeague, setDisplayLeague] = React.useState(false);
-  // const [displayScores, setDisplayScores] = React.useState(false);
-
+ 
   const [display, setDisplay] = React.useState({
     league: true,
     team: false,
     players: true,
-    scores: false
+    scores: false,
+    news: false,
+    standings: false
   })
 
   React.useEffect(() => {
@@ -126,13 +127,13 @@ const Dashboard = props => {
               </Box>
             </Tab> */}
         
-            <Tab className='tab' focusIndicator={false} title="LEAGUE" onClick={() => setDisplay({ ... display, ['league']: true, ['team']: false })} >
+            <Tab className='tab' focusIndicator={false} title="LEAGUE" onClick={() => setDisplay({ ...display, ['league']: true, ['team']: false })} >
               <Box pad="medium">
                 
               </Box>
             </Tab>
 
-            <Tab className='tab' focusIndicator={false} title="TEAM" onClick={() => setDisplay({ ... display, ['team']: true, ['league']: false })}>
+            <Tab className='tab' focusIndicator={false} title="TEAM" onClick={() => setDisplay({ ...display, ['team']: true, ['league']: false })}>
               <Box pad="medium">
                 {/* <UserTeam sessionToken={props.sessionToken} league={league} userID={userID} /> */}
               </Box>
@@ -158,7 +159,7 @@ const Dashboard = props => {
               PaperProps={{
                 sx: { 
                   width: '95vw',
-                  backgroundColor: '#151B21' 
+                  backgroundColor: '#292E33' 
                 }
               }}
             >
@@ -168,7 +169,7 @@ const Dashboard = props => {
               </div>
               
               <div style={{marginBottom: '1em', textAlign: 'center'}}>
-                <Button color='#050a0e' primary label="Logout" style={{ fontFamily: 'Arial', padding: '1em' }} onClick={() => {
+                <Button color='#fcee09' primary label="Logout" style={{ fontFamily: 'Arial', padding: '1em' }} onClick={() => {
                   props.clearLocalStorage();
                   navigate('/');
                 }} />
@@ -204,7 +205,7 @@ const Dashboard = props => {
             <div id='sidebar_view'>
               <div style={{ height: '100vh', width: '78vw', backgroundColor: '#292E33', overflowY: 'scroll' }}>
                 {
-                  display.players ? <Players /> : display.scores ? <Scores /> : <div></div>
+                  display.players ? <Players sessionToken={props.sessionToken} userID={userID} league={league} /> : display.scores ? <Scores /> : display.news ? <News /> : display.standings ? <Standings /> : <div></div>
                 }
               </div>
               <Nav style={{ margin: '0.2em', boxShadow: '50px black'}}>
@@ -213,37 +214,77 @@ const Dashboard = props => {
                   <div>
                     <div className='icon_container'>
                       <Button 
+                        focusIndicator={false}
                         icon={
                           <Group 
                             className='sidebar_icon' 
-                            color={display.players ? '#fcee09' : 'white'}
+                            color={display.players ? '#fcee09' : '#999999'}
                             onClick={() => setDisplay({ 
-                                ...display, ['players']: true, ['scores']: false 
+                                ...display, ['players']: true, ['scores']: false, ['news']: false, ['standings']: false 
                               }
                             )} 
                           />
                         } 
                       />
                     </div>
-                    <span style={{ color: display.players ? '#fcee09' : 'white' }}>players</span>
+                    <span style={{ color: display.players ? '#fcee09' : '#999999' }}>Players</span>
                   </div>
 
                   <div>
                     <div className='icon_container'>
                       <Button 
+                        focusIndicator={false}
                         icon={
                           <Scorecard 
                             className='sidebar_icon' 
-                            color={display.scores ? '#fcee09' : 'white'}
+                            color={display.scores ? '#fcee09' : '#999999'}
                             onClick={() => setDisplay({ 
-                                ...display, ['scores']: true, ['players']: false 
+                                ...display, ['scores']: true, ['players']: false, ['news']: false, ['standings']: false 
                               }
                             )} 
                           />
                         } 
                       />
                     </div>
-                    <span style={{ color: display.scores ? '#fcee09' : 'white' }}>scores</span>
+                    <span style={{ color: display.scores ? '#fcee09' : '#999999' }}>Scores</span>
+                  </div>
+
+                  <div>
+                    <div className='icon_container'>
+                      <Button 
+                        focusIndicator={false}
+                        icon={
+                          <BarChart 
+                            className='sidebar_icon' 
+                            color={display.standings ? '#fcee09' : '#999999'}
+                            onClick={() => setDisplay({ 
+                                ...display, ['standings']: true, ['players']: false, ['scores']: false, ['news']: false 
+                              }
+                            )} 
+                          />
+                        } 
+                      />
+                    </div>
+                    <span style={{ color: display.standings ? '#fcee09' : '#999999' }}>Standings</span>
+                  </div>
+
+                  <div>
+                    <div className='icon_container'>
+                      <Button 
+                        focusIndicator={false}
+                        icon={
+                          <Article 
+                            className='sidebar_icon' 
+                            color={display.news ? '#fcee09' : '#999999'}
+                            onClick={() => setDisplay({ 
+                                ...display, ['news']: true, ['players']: false, ['scores']: false, ['standings']: false 
+                              }
+                            )} 
+                          />
+                        } 
+                      />
+                    </div>
+                    <span style={{ color: display.news ? '#fcee09' : '#999999' }}>News</span>
                   </div>
 
                 </div>

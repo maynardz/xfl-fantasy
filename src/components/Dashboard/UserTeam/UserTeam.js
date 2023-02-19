@@ -32,7 +32,10 @@ const UserTeam = props => {
       }
     })
     .then(res => res.json())
-    .then(json => setTeam(json))
+    .then(json => {
+      console.log(json);
+      setTeam(json)
+    })
     .catch(err => console.log(err))
   }
   
@@ -43,6 +46,7 @@ const UserTeam = props => {
           <div>
             <h4 style={{color: 'white', fontFamily: 'Arial', display: 'inline-block'}}>{team.team_name}</h4>
             <Actions style={{height: '15px'}}/>
+            <p style={{ margin: 0, marginTop: '-0.75em' }}>{team.wins}-{team.losses}</p>
           </div>
         </CardBody>
       </Card>

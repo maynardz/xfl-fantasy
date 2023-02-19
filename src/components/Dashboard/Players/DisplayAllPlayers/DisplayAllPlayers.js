@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardBody, Header, Tabs, Tab, Box, TextInput } from 'grommet';
+import { Button } from 'grommet';
+import { AddCircle } from 'grommet-icons';
 
 const colors = {
   qb: '#ff003c',
@@ -34,9 +35,13 @@ const DisplayPlayers = props => {
     <div onClick={() => props.handle_toggle(props.player)}>
             {/* <hr style={{ width: '80%', float: 'left', margin: 0 }} /> */}
       <div style={{display: 'flex', justifyContent: 'start', alignItems: 'center', height: '60px', fontFamily: 'Arial', color: 'white', borderBottom: '1px solid white' }}>
-        <h4>
-          {
-            props.index+1 < 10 ? 
+        <div>
+          <Button icon={ <AddCircle /> } onClick={() => props.addPlayer(props.player)} />
+        </div>
+        <div>
+          <h4>
+            {
+              props.index+1 < 10 ? 
               <p style={{ marginRight: '2.5em', fontSize: '14px' }}>
                 <span style={{ visibility: 'hidden' }}>0</span>
                 <span style={{ visibility: 'hidden' }}>0</span>
@@ -48,14 +53,14 @@ const DisplayPlayers = props => {
                   {props.index+1}
               </p> 
               : <p style={{ marginRight: '2.5em', fontSize: '14px' }}>{props.index+1}</p>
-          }
-        </h4>
+            }
+          </h4>
+        </div>
         <div>
           <div style={{}}>
             <p style={{ marginBottom: '-2.5px', fontSize: '14px' }}><b>{props.player.fullName}</b></p>
-            <p style={{ fontSize: '14px', marginTop: '-2.5px'}}><span style={{ color: props.player.position.abbreviation === 'QB' ? colors.qb : props.player.position.abbreviation === 'RB' ? colors.rb : props.player.position.abbreviation === 'WR' ? colors.wr : props.player.position.abbreviation === 'TE' ? colors.te : props.player.position.abbreviation === 'k' ? colors.k : '#fff' }}>{props.player.position.abbreviation}</span> - {props.player.team.abbreviation}</p>
+            <p style={{ fontSize: '12px', marginTop: '-2.5px'}}><span style={{ color: props.player.position.abbreviation === 'QB' ? colors.qb : props.player.position.abbreviation === 'RB' ? colors.rb : props.player.position.abbreviation === 'WR' ? colors.wr : props.player.position.abbreviation === 'TE' ? colors.te : props.player.position.abbreviation === 'k' ? colors.k : '#fff' }}>{props.player.position.abbreviation}</span> - {props.player.team.abbreviation}</p>
           </div>
-          
         </div>
       </div>
       {/* <hr style={{ width: '80%', float: 'left', margin: 0 }} /> */}

@@ -3,15 +3,12 @@ import React from 'react';
 import DisplayAllPlayers from './DisplayAllPlayers/DisplayAllPlayers';
 import DisplaySinglePlayer from './DisplaySinglePlayer/DisplaySinglePlayer';
 
-import { Grommet, Card, CardBody, Header, Spinner } from 'grommet';
-import { useFetcher } from 'react-router-dom';
-
-let playersArr = [];
+import { Grommet, Spinner } from 'grommet';
 
 const Players = props => {
+  console.log(props);
 
   const [players, setPlayers] = React.useState([]);
-  const [list, setList] = React.useState([]);
   const [selectedPlayer, setSelectedPlayer] = React.useState({});
   const [toggle, setToggle] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
@@ -56,11 +53,9 @@ const Players = props => {
 
   const addPlayer = async (player) => {
     console.log(player);
-    await fetch(`http://localhost:3000/roster/${props.userID}/${props.league.id}/${player.playerId}/add`, {
+    await fetch(`http://localhost:3000/roster/${props.userID}/${props.league.id}/add`, {
       method: 'POST',
-      body: JSON.stringify({
-        fa: false
-      }),
+      body: JSON.stringify(),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${props.sessionToken}`
@@ -83,8 +78,7 @@ const Players = props => {
   }
 
   return (
-    <Grommet>
-
+    <Grommet>    
       {
         loading ? (
           <div style={{ height: '100vh', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -94,15 +88,15 @@ const Players = props => {
           <DisplaySinglePlayer selectedPlayer={selectedPlayer} toggle={toggle} setToggle={setToggle} setSelectedPlayer={setSelectedPlayer} />
         ) : (
             <div>
-              <div className='spacing_header' style={{ height: '175px', backgroundColor: '#151B21', display: 'flex', alignItems: 'center' }}>
-                <h1 style={{ fontFamily: 'Arial', color: '#999999', marginLeft: '1em' }}>Players</h1>
-              </div>    
+              <div className='spacing_header' style={{ height: '150px', backgroundColor: '#02080D', display: 'flex', alignItems: 'end' }}>
+                <h2 style={{ fontFamily: 'Arial', color: '#999999', marginLeft: '1em' }}>Available Players</h2>
+              </div>
               {
                 players.filter(player => player.position.abbreviation === 'QB' || player.position.abbreviation === 'RB' || player.position.abbreviation === 'WR' || player.position.abbreviation === 'TE' || player.position.abbreviation === 'K').map((player, index) => {
                   return (
                     <DisplayAllPlayers
                     key={player && player.id ? player.id : index}
-                    player={player} index={index} handle_toggle={handle_toggle} />
+                    player={player} index={index} handle_toggle={handle_toggle} addPlayer={addPlayer} />
                   )
                 })
               }
