@@ -73,6 +73,7 @@ const Scores = props => {
                         {event.status.type.shortDetail}
                       </div>
 
+
                       <div>
                         <img src={event.competitions[0].competitors[0].team.logo} height='50px' />
                         <p style={{ margin: '15px', marginTop: '-0.1em' }}><b>{event.competitions[0].competitors[0].team.abbreviation}</b></p>
