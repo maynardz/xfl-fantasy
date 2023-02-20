@@ -60,9 +60,9 @@
 }
 
 .tab[aria-expanded="false"] span  {
-  color: white;
+  color: white !important;
 }
 
 .tab[aria-expanded="true"] span  {
-  color: #fcee09;
+  color: #fcee09 !important;
 }

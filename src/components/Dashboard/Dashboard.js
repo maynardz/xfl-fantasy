@@ -128,17 +128,27 @@ const Dashboard = props => {
               </Box>
             </Tab> */}
         
-            <Tab className='tab' focusIndicator={false} title="LEAGUE" onClick={() => setDisplay({ ...display, ['league']: true, ['team']: false })} >
-              <Box pad="medium">
-                
-              </Box>
-            </Tab>
+            {
+              JSON.stringify(league) === '{}' ? (
+                <div>
+                  <img src={wolfpack_logo} alt='Wolfpack logo featuring prominent W and P.' style={{ height: '35px', width: 'auto' }} />
+                </div>
+              ) : (
+                <>
+                  <Tab className='tab' aria-expanded={display.league} focusIndicator={false} title="LEAGUE" onClick={() => setDisplay({ ...display, ['league']: true, ['team']: false })} >
+                    <Box pad="medium">
+                      
+                    </Box>
+                  </Tab>
 
-            <Tab className='tab' focusIndicator={false} title="TEAM" onClick={() => setDisplay({ ...display, ['team']: true, ['league']: false })}>
-              <Box pad="medium">
-                {/* <UserTeam sessionToken={props.sessionToken} league={league} userID={userID} /> */}
-              </Box>
-            </Tab>
+                  <Tab className='tab' aria-expanded={display.team} focusIndicator={false} title="TEAM" onClick={() => setDisplay({ ...display, ['team']: true, ['league']: false })}>
+                    <Box pad="medium">
+                      
+                    </Box>
+                  </Tab>
+                </>
+              )
+            }
 
           </Tabs>
           {

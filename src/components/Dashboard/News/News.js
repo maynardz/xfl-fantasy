@@ -22,7 +22,7 @@ const News = props => {
 
   return (
     <div style={{ fontFamily: 'Arial', color: '#999999' }}>
-      <div className='spacing_header' style={{ height: '150px', backgroundColor: '#02080D', display: 'flex', alignItems: 'end' }}>
+      <div className='spacing_header' style={{ height: '150px', backgroundColor: '#0D151D', display: 'flex', alignItems: 'end' }}>
         <h2 style={{ fontFamily: 'Arial', color: '#999999', marginLeft: '1em' }}>XFL News</h2>
       </div>
       
