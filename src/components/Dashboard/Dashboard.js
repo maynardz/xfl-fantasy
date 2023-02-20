@@ -205,7 +205,7 @@ const Dashboard = props => {
             PaperProps={{
               sx: { 
                 position: 'absolute',
-                maxHeight: '90vh',
+                maxHeight: '85vh',
                 backgroundColor: '#151B21' 
               }
             }}
