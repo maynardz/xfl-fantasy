@@ -31,7 +31,7 @@ const Standings = props => {
             xflStandings.children.map((division, index) => {
               // console.log(division);
               return (
-                <div key={index} style={{ backgroundColor: '#151B21', borderRadius: '5px', margin: '1em', padding: '1em', display: 'flex', justifyContent: 'center' }}>
+                <div key={index} style={{ backgroundColor: '#151B21', borderRadius: '5px', margin: '1em', padding: '0.25em', display: 'flex', justifyContent: 'center' }}>
                   <div style={{ height: 'auto', width: '100%' }}>
                     <h2>{division.name}</h2>
                     <Table>

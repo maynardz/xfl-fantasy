@@ -202,6 +202,13 @@ const Dashboard = props => {
             open={props.state['right']}
             onClose={props.toggleDrawer('right', false)}
             onOpen={props.toggleDrawer('right', true)}
+            PaperProps={{
+              sx: { 
+                position: 'absolute',
+                maxHeight: '100vh',
+                backgroundColor: '#151B21' 
+              }
+            }}
           >
             <div id='sidebar_view'>
               <div style={{ height: '100vh', width: '78vw', backgroundColor: '#292E33', overflowY: 'scroll' }}>

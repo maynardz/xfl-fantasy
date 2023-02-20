@@ -82,7 +82,7 @@ const Scores = props => {
                       </div>
                     </div>
                   ) : event.status.type.state === 'in' ? (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em', textAlign: 'center', backgroundColor: '#151B21', padding: '1em', borderRadius: '5px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em', textAlign: 'center', backgroundColor: '#151B21', padding: '0.25em', borderRadius: '5px' }}>
                       <div>
                         <img src={event.competitions[0].competitors[1].team.logo} height='50px' />
                         <p style={{ margin: '15px', marginTop: '-0.1em' }}><b>{event.competitions[0].competitors[1].team.abbreviation}</b></p>
@@ -108,7 +108,7 @@ const Scores = props => {
                       </div>                      
                     </div>
                   ) : event.status.type.state === 'post' ? (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em', textAlign: 'center', backgroundColor: '#151B21', padding: '1em', borderRadius: '5px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em', textAlign: 'center', backgroundColor: '#151B21', padding: '0.25em', borderRadius: '5px' }}>
                       <div>
                         <img src={event.competitions[0].competitors[1].team.logo} height='50px' />
                         <p style={{ margin: '15px', marginTop: '-0.1em' }}><b>{event.competitions[0].competitors[1].team.abbreviation}</b></p>

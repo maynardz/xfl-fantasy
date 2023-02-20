@@ -1,4 +1,5 @@
 import React from 'react';
+import APIURL from '../../../../helpers/environment';
 
 import DisplayCreateLeague from './DisplayCreateLeague/DisplayCreateLeague';
 
@@ -49,7 +50,7 @@ const CreateLeague = props => {
   const create_league = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/user/${props.userID}/create-league`, {
+    fetch(`${APIURL}/user/${props.userID}/create-league`, {
       method: 'POST',
       body: JSON.stringify({
         league: {
