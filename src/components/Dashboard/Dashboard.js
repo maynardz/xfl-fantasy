@@ -204,10 +204,8 @@ const Dashboard = props => {
             onOpen={props.toggleDrawer('right', true)}
             PaperProps={{
               sx: { 
-                position: 'absolute',
-                height: '90vh',
+                height: '50vh',
                 backgroundColor: '#151B21',
-                overflowY: 'hidden'
               }
             }}
           >
