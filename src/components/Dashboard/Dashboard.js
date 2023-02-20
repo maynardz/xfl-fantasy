@@ -206,7 +206,8 @@ const Dashboard = props => {
               sx: { 
                 position: 'absolute',
                 height: '90vh',
-                backgroundColor: '#151B21' 
+                backgroundColor: '#151B21',
+                overflowY: 'hidden'
               }
             }}
           >
