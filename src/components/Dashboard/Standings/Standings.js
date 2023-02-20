@@ -22,7 +22,7 @@ const Standings = props => {
 
   return (
     <div>
-      <div className='spacing_header' style={{ height: '150px', backgroundColor: '#02080D', display: 'flex', alignItems: 'end' }}>
+      <div className='spacing_header' style={{ height: '150px', backgroundColor: '#0D151D', display: 'flex', alignItems: 'end' }}>
         <h2 style={{ fontFamily: 'Arial', color: '#999999', marginLeft: '1em' }}>XFL Standings</h2>
       </div>
       <div style={{ fontFamily: 'Arial', color: '#999999', fontSize: '12.5px' }}>
@@ -31,7 +31,7 @@ const Standings = props => {
             xflStandings.children.map((division, index) => {
               // console.log(division);
               return (
-                <div key={index} style={{ backgroundColor: '#151B21', borderRadius: '5px', margin: '1em', padding: '0.25em', display: 'flex', justifyContent: 'center' }}>
+                <div key={index} style={{ margin: '1em 0 1em 0', padding: '0.25em', display: 'flex', justifyContent: 'center' }}>
                   <div style={{ height: 'auto', width: '100%' }}>
                     <h2>{division.name}</h2>
                     <Table>

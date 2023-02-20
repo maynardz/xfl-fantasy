@@ -42,18 +42,15 @@ const Scores = props => {
 
   return (
     <div style={{ fontFamily: 'Arial', color: '#999999' }}>
-      {/* <div className='spacing_header' style={{ height: '150px', backgroundColor: '#02080D', display: 'flex', alignItems: 'end' }}>
-        <h2 style={{ fontFamily: 'Arial', color: '#999999', marginLeft: '1em' }}>Scores</h2>
-      </div> */}
-      <div>
-        <div style={{ padding: '1em', textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
-          <div>
-            <h2>Week {page}</h2>
-            <ThemeProvider theme={theme}>
-              <Pagination color='primary' count={10} page={page} defaultPage={currentWeek} siblingCount={0} boundaryCount={0} onChange={handleChange} sx={{ padding: '0.25em', borderRadius: '5px' }} />
-            </ThemeProvider>
-          </div>
+      <div className='spacing_header' style={{ height: '150px', backgroundColor: '#0D151D', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div>
+          <h2 style={{ textAlign: 'center' }}>Week {page}</h2>
+          <ThemeProvider theme={theme}>
+            <Pagination count={10} page={page} defaultPage={currentWeek} siblingCount={0} boundaryCount={0} onChange={handleChange} sx={{ padding: '0.25em', borderRadius: '5px', button: { color: '#999999'} }} />
+          </ThemeProvider>
         </div>
+      </div>
+      <div>
         {
           data.length === 0 ? <div></div> :
           data.map((event, index) => {
@@ -108,7 +105,7 @@ const Scores = props => {
                       </div>                      
                     </div>
                   ) : event.status.type.state === 'post' ? (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em', textAlign: 'center', backgroundColor: '#151B21', padding: '0.25em', borderRadius: '5px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em 0 1em 0', textAlign: 'center', padding: '0.25em', borderRadius: '5px' }}>
                       <div>
                         <img src={event.competitions[0].competitors[1].team.logo} height='50px' />
                         <p style={{ margin: '15px', marginTop: '-0.1em' }}><b>{event.competitions[0].competitors[1].team.abbreviation}</b></p>
