@@ -205,13 +205,13 @@ const Dashboard = props => {
             PaperProps={{
               sx: { 
                 position: 'absolute',
-                height: '100vh',
+                height: '90vh',
                 backgroundColor: '#151B21' 
               }
             }}
           >
             <div id='sidebar_view'>
-              <div style={{ height: 'auto', width: '78vw', backgroundColor: '#292E33', overflowY: 'scroll' }}>
+              <div style={{ height: '100vh', width: '78vw', backgroundColor: '#292E33', overflowY: 'auto' }}>
                 {
                   display.players ? <Players sessionToken={props.sessionToken} userID={userID} league={league} /> : display.scores ? <Scores /> : display.news ? <News /> : display.standings ? <Standings /> : <div></div>
                 }
