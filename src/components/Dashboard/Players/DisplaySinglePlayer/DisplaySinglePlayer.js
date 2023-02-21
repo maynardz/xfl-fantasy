@@ -61,7 +61,7 @@ const DisplaySinglePlayer = props => {
             {props.selectedPlayer.id}
             <br/>
             <br/>
-            <Button label='<' style={{ position: 'absolute', bottom: 0, marginBottom: '1em' }} color='#fcee09' onClick={() => {
+            <Button label='<' style={{ position: 'absolute', top: 25, marginBottom: '1em' }} color='#fcee09' onClick={() => {
               props.setSelectedPlayer({});
               props.setToggle(!props.toggle);
             }} />
