@@ -33,7 +33,7 @@ const Standings = props => {
               return (
                 <div key={index} style={{ margin: '1em 0 1em 0', padding: '0.25em', display: 'flex', justifyContent: 'center' }}>
                   <div style={{ height: 'auto', width: '100%' }}>
-                    <h2>{division.name}</h2>
+                    <h2 style={{ marginLeft: '0.65em' }}>{division.name}</h2>
                     <Table>
                       <TableHeader>
                         <TableRow>
