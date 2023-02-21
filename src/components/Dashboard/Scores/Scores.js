@@ -3,7 +3,6 @@ import './Scores.css'
 
 import Pagination from '@mui/material/Pagination';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LeagueTeams from '../Teams/Teams';
 
 const theme = createTheme({
   status: {
@@ -57,13 +56,14 @@ const Scores = props => {
 
     const eventJson = eventRes.map((response) => response.json());
     const data = await Promise.all(eventJson);
+    console.log(data);
 
     // teams, score, record
 
     // TEAMS
     let teamsArr = [];
 
-    const eventCompetitors = data.map((event, index) => {
+    data.map((event, index) => {
       console.log(event);
       event.competitions[0].competitors.map((team) => teamsArr.push(team))
     });
@@ -98,21 +98,30 @@ const Scores = props => {
 
     let recordDataRec = [ [recordData[0], recordData[1]], [recordData[2], recordData[3]], [recordData[4], recordData[5]], [recordData[6], recordData[7]] ];
 
+    // STATUS
+    let statusArr = [];
+
+    data.map((event) => {
+      statusArr.push(event.competitions[0].status['$ref']);
+    })
+
+    const statusReq = statusArr.map((compStatus) => fetch(compStatus));
+    const statusRes = await Promise.all(statusReq);
+    console.log(statusRes);
+
+    const statusJson = statusRes.map((response) => response.json());
+    const statusData = await Promise.all(statusJson);
+
     const full = data.map((event, index) => ({
       ...event,
       competitors: teamDataRec[index],
       score: scoreDataRec[index],
-      record: recordDataRec[index]
+      record: recordDataRec[index],
+      status: statusData[index]
     }));
 
     console.log(full);
     setPreviousWeekData(full);
-  }
-
-  const getDate = week => {
-    let dateStr = week;
-    let [yyyy,mm,dd,hh,mi] = dateStr.split(/[/:\-T-Z]/);
-    return `${dd}-${mm}-${yyyy} ${hh}:${mi}`
   }
 
   return (
@@ -213,7 +222,7 @@ const Scores = props => {
           ) : (
             previousWeekData.length === 0 ? <div></div> : (
               previousWeekData.map((week, index) => {
-                console.log(week);
+                // console.log(week);
                 return (
                   <div key={index} style={{ display: 'flex', justifyContent: 'space-between', 'alignItems': 'center', margin: '1em 0 1em 0', textAlign: 'center', padding: '0.25em', borderRadius: '5px' }}>
                     <div>
@@ -223,17 +232,17 @@ const Scores = props => {
                     </div>
 
                     <div>
-                      <h1>{week.score[1].displayValue}</h1>
+                      <h1>{page > currentWeek ? <div></div> : week.score[1].displayValue}</h1>
                     </div>
                 
                     <div style={{ fontSize: '12.5px'}}>
                       {
-                        page > currentWeek ? getDate(week.date) : 'FINAL'
+                        page > currentWeek ? week.status.type.shortDetail : 'FINAL'
                       }
                     </div>
 
                     <div>
-                      <h1>{week.score[0].displayValue}</h1>
+                      <h1>{page > currentWeek ? <div></div> : week.score[0].displayValue}</h1>
                     </div>
                     
                     <div>
