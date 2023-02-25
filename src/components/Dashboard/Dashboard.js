@@ -109,7 +109,7 @@ const Dashboard = props => {
     }
   }
 
-  if (!props.authenticated) {
+  if (!props.sessionToken === undefined) {
     return (
       <div style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <p style={{ fontFamily: 'Arial', color: '#fcee09', fontSize: '18px', fontWeight: '700', textAlign: 'center' }}>You are not authorized to view this page. Please create an account or login to an existing account to continue</p>
